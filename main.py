@@ -71,18 +71,6 @@ drawing = Image.open('drawing.png')
 
 drawing = process_img(drawing)
 
-
-def increase_font():
-  from IPython.display import Javascript
-  display(Javascript('''
-  for (rule of document.styleSheets[0].cssRules){
-    if (rule.selectorText=='body') {
-      rule.style.fontSize = '25px'
-      break
-    }
-  }
-  '''))
-
 increase_font()
 
 drawing_test = drawing.reshape(1,784)

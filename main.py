@@ -27,7 +27,7 @@ st.title('Digit Recognition')
 
 canvas = st_canvas(
   fill_color="#ffffff",  # Fixed fill color with some opacity
-  stroke_width=20,
+  stroke_width=35,
   stroke_color="rgba(0, 0, 0, 1)",
   background_color="rgba(0, 0, 0, 0)",
   width=400,

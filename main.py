@@ -37,19 +37,16 @@ canvas = st_canvas(
   key="canvas",
 )
 
-def process_img(img):
-  img.resize((28,28))
-  img = img.convert('L')
-  img = ImageOps.invert(img)
-  img = np.array(img)
-  # img = img/255
-  return img
-
 
 if canvas.image_data is not None:
-  drawing = Image.fromarray(np.uint8(cm.gist_earth(np.resize(canvas.image_data, (28,28)))))
-  drawing = process_img(drawing)
-  st.image(drawing)
+  drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('L')
+  resized_drawing = drawing.resize((28, 28))
+  st.image(drawing, caption="Original Image", use_column_width=True)
+  st.image(resized_drawing, caption="Resized Image (28x28)", use_column_width=True)
+
+  pixel_data = np.array(resized_image) / 255.0
+  st.write("Pixel Data:")
+  st.write(pixel_data)
 
 '''
 def draw(filename='drawing.png', w=400, h=400, line_width=40):

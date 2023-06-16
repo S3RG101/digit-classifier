@@ -37,7 +37,7 @@ canvas = st_canvas(
 )
 
 def process_img(img):
-  img = img.resize((28,28))
+  np.resize(img, (28,28))
 
   img = img.convert('L')
   img = ImageOps.invert(img)
@@ -51,7 +51,7 @@ def process_img(img):
 
 
 if canvas.image_data is not None:
-  image = process_img(canvas.image_data.copy())
+  image = process_img(np.array(canvas.image_data))
   st.image(image)
 
 '''

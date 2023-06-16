@@ -36,22 +36,6 @@ canvas = st_canvas(
   key="canvas",
 )
 
-if canvas.image_data is not None:
-    st.image(canvas.image_data)
-
-'''
-def draw(filename='drawing.png', w=400, h=400, line_width=40):
-  display(HTML(canvas_html % (w, h, line_width)))
-  data = eval_js("data")
-  binary = b64decode(data.split(',')[1])
-  with open(filename, 'wb') as f:
-    f.write(binary)
-  #return len(binary)
-
-def show_img(img):
-  plt.imshow(img, cmap=plt.cm.binary)
-  plt.show()
-
 def process_img(img):
   img = img.resize((28,28))
 
@@ -65,11 +49,23 @@ def process_img(img):
 
   return img
 
-draw()
 
-drawing = Image.open('drawing.png')
+if canvas.image_data is not None:
+  image = process_img(cavas.image_data)
+  st.image(image)
 
-drawing = process_img(drawing)
+'''
+def draw(filename='drawing.png', w=400, h=400, line_width=40):
+  display(HTML(canvas_html % (w, h, line_width)))
+  data = eval_js("data")
+  binary = b64decode(data.split(',')[1])
+  with open(filename, 'wb') as f:
+    f.write(binary)
+  #return len(binary)
+
+def show_img(img):
+  plt.imshow(img, cmap=plt.cm.binary)
+  plt.show()
 
 increase_font()
 

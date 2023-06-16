@@ -8,13 +8,13 @@ import pickle
 filename1 = "./logreg.sav"
 logreg = pickle.load(open(filename1, 'rb'))
 
-filename2 = "/digit-classifier/neunet"
+filename2 = "./neunet"
 nn = keras.models.load_model(filename2)
 
-filename3 = "/digit-classifier/cnn"
+filename3 = "./cnn"
 cnn = keras.models.load_model(filename3)
 
-filename4 = "/digit-classifier/lenet"
+filename4 = "./lenet"
 lenet = keras.models.load_model(filename4)
 
 

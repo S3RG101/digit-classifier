@@ -42,7 +42,7 @@ def process_img(img):
   img = img.convert('L')
   img = ImageOps.invert(img)
   img = np.array(img)
-  img = img/255
+  # img = img/255
   return img
 
 

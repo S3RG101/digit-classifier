@@ -48,8 +48,7 @@ if canvas.image_data is not None:
   st.write(pixel_data)
   st.write(pixel_data.shape)
 
-  drawing = ImageOps.grayscale(resized_drawing)
-  pixel_data = np.array(resized_drawing) / 255.0
+  pixel_data = np.array(resized_drawing.convert('L')) / 255.0
   st.write("Pixel Data:")
   st.write(pixel_data)
   st.write(pixel_data.shape)

@@ -38,13 +38,22 @@ canvas = st_canvas(
 
 
 if canvas.image_data is not None:
-  drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('RGB')
+  drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('RGBA')
   resized_drawing = drawing.resize((28, 28))
   st.image(drawing, caption="Original Image")
   st.image(resized_drawing, caption="Resized Image (28x28)", use_column_width=True)
 
+  resized_drawing.load()
+  background = Image.new("RGB", resized_drawing.size, (255, 255, 255))
+  background.paste(resized_drawing, mask = rgba_image.split()[3])
+  
   pixel_data = np.array(resized_drawing)
   st.write("Pixel data original shape")
+  st.write(pixel_data)
+  st.write(pixel_data.shape)
+
+  pixel_data = np.array(background)
+  st.write("Pixel data rgb shape")
   st.write(pixel_data)
   st.write(pixel_data.shape)
 

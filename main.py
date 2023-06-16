@@ -38,11 +38,11 @@ canvas = st_canvas(
 
 
 if canvas.image_data is not None:
-  drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('RGBA')
-  gray_drawing = drawing.convert('L')
-  resized_drawing = gray_drawing.resize((28, 28))
+  drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('L')
+  # gray_drawing = drawing.convert('L')
+  resized_drawing = drawing.resize((28, 28))
   st.image(drawing, caption="Original Image")
-  st.image(resized_drawing.convert('RGBA'), caption="Resized Image (28x28)")
+  st.image(resized_drawing, caption="Resized Image (28x28)")
 
   pixel_data = np.array(resized_drawing) / 255.0
   st.write("Pixel Data:")

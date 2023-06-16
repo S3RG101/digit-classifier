@@ -38,6 +38,8 @@ with col1:
     drawing_mode="freedraw",
     key="canvas")
 
+st.header('Breakdown')
+
 if canvas.image_data is not None:
   drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('RGBA')
   resized_drawing = drawing.resize((28, 28))
@@ -77,4 +79,3 @@ with col2:
   st.write(f'Neural Networks says {nnpred} with probability {round(nnmax_idx*100, 2)}%')
   st.write(f'Convolutional Neural Networks says {cnnpred} with probability {round(cnnmax_idx*100, 2)}%')
   st.write(f'LeNet-5 says {lenetpred} with probability {round(lenetmax_idx*100, 2)}%')
-  

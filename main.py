@@ -47,47 +47,32 @@ if canvas.image_data is not None:
   background = Image.new("RGB", resized_drawing.size, (255, 255, 255))
   background.paste(resized_drawing, mask = resized_drawing.split()[3])
 
-  pixel_data = np.array(background.convert('L')) / 255.0
+  pixels = np.array(background.convert('L')) / 255.0
   st.write("Pixel Data:")
-  st.write(pixel_data)
-  st.write(pixel_data.shape)
+  st.write(pixels)
+  st.write(pixels.shape)
 
-'''
-def draw(filename='drawing.png', w=400, h=400, line_width=40):
-  display(HTML(canvas_html % (w, h, line_width)))
-  data = eval_js("data")
-  binary = b64decode(data.split(',')[1])
-  with open(filename, 'wb') as f:
-    f.write(binary)
-  #return len(binary)
 
-def show_img(img):
-  plt.imshow(img, cmap=plt.cm.binary)
-  plt.show()
-
-increase_font()
-
-drawing_test = drawing.reshape(1,784)
+drawing_test = pixels.reshape(1,784)
 pred = logreg.predict(drawing_test)
-print(f'Logistic Regression says {pred[0]}')
+st.write(f'Logistic Regression says {pred[0]}')
 
-drawing_test = drawing.reshape(1,28,28)
+drawing_test = pixels.reshape(1,28,28)
 pred = nn.predict(drawing_test)
 max_idx = np.max(pred)
 guess = np.argmax(pred)
-print(f'Neural Networks says {guess} with probability {round(max_idx*100, 2)}%')
+st.write(f'Neural Networks says {guess} with probability {round(max_idx*100, 2)}%')
 
-drawing_test = drawing.reshape(1,28,28)
+drawing_test = pixels.reshape(1,28,28)
 pred = cnn.predict(drawing_test)
 max_idx = np.max(pred)
 guess = np.argmax(pred)
-print(f'Convolutional Neural Networks says {guess} with probability {round(max_idx*100, 2)}%')
+st.write(f'Convolutional Neural Networks says {guess} with probability {round(max_idx*100, 2)}%')
 
-drawing_test = drawing.reshape(28,28)
+drawing_test = pixels.reshape(28,28)
 drawing_test = np.pad(drawing_test, [(2,2), (2,2)], mode='constant')
 drawing_test = drawing_test.reshape((1,32,32))
 pred = lenet.predict(drawing_test)
 max_idx = np.max(pred)
 guess = np.argmax(pred)
-print(f'LeNet-5 says {guess} with probability {round(max_idx*100, 2)}%')
-'''
+st.write(f'LeNet-5 says {guess} with probability {round(max_idx*100, 2)}%')

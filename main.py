@@ -25,17 +25,18 @@ lenet = keras.models.load_model(filename4)
 
 st.title('Digit Recognition')
 
-canvas = st_canvas(
-  fill_color="#ffffff",  # Fixed fill color with some opacity
-  stroke_width=35,
-  stroke_color="rgba(0, 0, 0, 1)",
-  background_color="rgba(0, 0, 0, 0)",
-  width=400,
-  height=400,
-  drawing_mode="freedraw",
-  key="canvas",
-)
+col1, col2 = st.columns(2)
 
+with col1:
+  canvas = st_canvas(
+    fill_color="#ffffff",
+    stroke_width=30,
+    stroke_color="rgba(0, 0, 0, 1)",
+    background_color="rgba(0, 0, 0, 0)",
+    width=300,
+    height=300,
+    drawing_mode="freedraw",
+    key="canvas")
 
 if canvas.image_data is not None:
   drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('RGBA')

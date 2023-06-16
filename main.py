@@ -25,15 +25,13 @@ lenet = keras.models.load_model(filename4)
 
 
 canvas = st_canvas(
-  fill_color="rgba(255, 165, 0, 0.3)",  # Fixed fill color with some opacity
+  fill_color="#ffffff",  # Fixed fill color with some opacity
   stroke_width=20,
   stroke_color="rgba(0, 0, 0, 1)",
   background_color="rgba(0, 0, 0, 0)",
-  update_streamlit=True,
   width=400,
   height=400,
   drawing_mode="freedraw",
-  point_display_radius= 0,
   key="canvas",
 )
 

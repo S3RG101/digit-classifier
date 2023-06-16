@@ -45,7 +45,7 @@ if canvas.image_data is not None:
 
   resized_drawing.load()
   background = Image.new("RGB", resized_drawing.size, (255, 255, 255))
-  background.paste(resized_drawing, mask = rgba_image.split()[3])
+  background.paste(resized_drawing, mask = resized_drawing.split()[3])
   
   pixel_data = np.array(resized_drawing)
   st.write("Pixel data original shape")

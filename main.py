@@ -47,7 +47,7 @@ def process_img(img):
 
 
 if canvas.image_data is not None:
-  drawing = Image.fromarray(np.uint8(cm.gist_earth(canvas.image_data)*255))
+  drawing = Image.fromarray(np.uint8(cm.gist_earth(canvas.image_data)))
   drawing = process_img(drawing)
   st.image(drawing)
 

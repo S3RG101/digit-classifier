@@ -22,7 +22,7 @@ from IPython.display import HTML, Image
 from google.colab.output import eval_js
 from base64 import b64decode
 
-%matplotlib inline
+# %matplotlib inline
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageOps

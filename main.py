@@ -36,7 +36,7 @@ canvas = st_canvas(
   key="canvas",
 )
 
-if canvas_result.image_data is not None:
+if canvas.image_data is not None:
     st.image(canvas_result.image_data)
 
 '''

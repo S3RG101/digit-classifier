@@ -43,13 +43,13 @@ if canvas.image_data is not None:
   st.image(drawing, caption="Original Image")
   st.image(resized_drawing, caption="Resized Image (28x28)", use_column_width=True)
 
-  pixel_data = np.array(drawing)
+  pixel_data = np.array(resized_drawing)
   st.write("Pixel data original shape")
   st.write(pixel_data)
   st.write(pixel_data.shape)
 
   drawing = ImageOps.grayscale(resized_drawing)
-  pixel_data = np.array(drawing) / 255.0
+  pixel_data = np.array(resized_drawing) / 255.0
   st.write("Pixel Data:")
   st.write(pixel_data)
   st.write(pixel_data.shape)

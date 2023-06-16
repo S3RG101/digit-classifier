@@ -51,7 +51,7 @@ def process_img(img):
 
 
 if canvas.image_data is not None:
-  image = process_img(canvas.image_data)
+  image = process_img(canvas.image_data.copy())
   st.image(image)
 
 '''

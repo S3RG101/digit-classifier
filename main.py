@@ -57,7 +57,7 @@ if canvas.image_data is not None:
   st.write(pixel_data)
   st.write(pixel_data.shape)
 
-  pixel_data = np.array(resized_drawing.convert('L')) / 255.0
+  pixel_data = np.array(background.convert('L')) / 255.0
   st.write("Pixel Data:")
   st.write(pixel_data)
   st.write(pixel_data.shape)

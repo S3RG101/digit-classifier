@@ -3,6 +3,7 @@ from streamlit_drawable_canvas import st_canvas
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import cm
 from tensorflow import keras
 import pickle
 

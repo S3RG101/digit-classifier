@@ -43,9 +43,9 @@ if canvas.image_data is not None:
   st.image(drawing, caption="Original Image")
   st.image(resized_drawing, caption="Resized Image (28x28)", use_column_width=True)
 
-  drawing = resized_drawing.convert('L')
-  drawing = ImageOps.invert(drawing)
-  pixel_data = np.array(drawing) / 255.0
+  # drawing = resized_drawing.convert('L')
+  # drawing = ImageOps.invert(drawing)
+  pixel_data = np.array(resized_drawing) / 255.0
   st.write("Pixel Data:")
   st.write(pixel_data)
 

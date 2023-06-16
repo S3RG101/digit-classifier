@@ -38,7 +38,7 @@ canvas = st_canvas(
 
 
 if canvas.image_data is not None:
-  drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('L')
+  drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('RGBA')
   # gray_drawing = drawing.convert('L')
   resized_drawing = drawing.resize((28, 28))
   st.image(drawing, caption="Original Image")

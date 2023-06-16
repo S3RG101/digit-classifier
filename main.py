@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from tensorflow import keras
 import pickle
 
-filename1 = "/digit-classifier/logreg.sav"
+filename1 = "./logreg.sav"
 logreg = pickle.load(open(filename1, 'rb'))
 
 filename2 = "/digit-classifier/neunet"

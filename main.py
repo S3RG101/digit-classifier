@@ -39,12 +39,6 @@ canvas = st_canvas(
 def process_img(img):
   np.resize(img, (28,28))
 
-  img = img.convert('L')
-  img = ImageOps.invert(img)
-  img = np.array(img)
-
-  # show_img(img)
-
   img = img/255
 
   return img

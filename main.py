@@ -47,7 +47,7 @@ if canvas.image_data is not None:
   background.paste(resized_drawing, mask = resized_drawing.split()[3])
 
   pixels = np.array(background.convert('L')) / 255.0
-  img = ImageOps.invert(img)
+  pixels = ImageOps.invert(pixels)
   st.write("Pixel Data:")
   st.write(pixels)
   st.write(pixels.shape)

@@ -46,7 +46,7 @@ def process_img(img):
 
 
 if canvas.image_data is not None:
-  drawing = Image.open(canvas.image_data)
+  drawing = Image.fromarray(np.uint8(canvas.image_data*255))
   drawing = process_img(drawing)
   st.image(drawing)
 

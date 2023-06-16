@@ -52,27 +52,29 @@ if canvas.image_data is not None:
   st.write(pixels)
   st.write(pixels.shape)
 
-
 drawing_test = pixels.reshape(1,784)
-pred = logreg.predict(drawing_test)
-st.write(f'Logistic Regression says {pred[0]}')
+logregpred = logreg.predict(drawing_test)
 
 drawing_test = pixels.reshape(1,28,28)
 pred = nn.predict(drawing_test)
-max_idx = np.max(pred)
-guess = np.argmax(pred)
-st.write(f'Neural Networks says {guess} with probability {round(max_idx*100, 2)}%')
+nnmax_idx = np.max(pred)
+nnpred = np.argmax(pred)
 
 drawing_test = pixels.reshape(1,28,28)
 pred = cnn.predict(drawing_test)
-max_idx = np.max(pred)
-guess = np.argmax(pred)
-st.write(f'Convolutional Neural Networks says {guess} with probability {round(max_idx*100, 2)}%')
+cnnmax_idx = np.max(pred)
+cnnpred = np.argmax(pred)
 
 drawing_test = pixels.reshape(28,28)
 drawing_test = np.pad(drawing_test, [(2,2), (2,2)], mode='constant')
 drawing_test = drawing_test.reshape((1,32,32))
 pred = lenet.predict(drawing_test)
-max_idx = np.max(pred)
-guess = np.argmax(pred)
-st.write(f'LeNet-5 says {guess} with probability {round(max_idx*100, 2)}%')
+lenetmax_idx = np.max(pred)
+lenetpred = np.argmax(pred)
+
+with col2:
+  st.write(f'Logistic Regression says {logregpred[0]}')
+  st.write(f'Neural Networks says {nnpred} with probability {round(nnmax_idx*100, 2)}%')
+  st.write(f'Convolutional Neural Networks says {cnnpred} with probability {round(cnnmax_idx*100, 2)}%')
+  st.write(f'LeNet-5 says {lenetpred} with probability {round(lenetmax_idx*100, 2)}%')
+  

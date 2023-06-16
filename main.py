@@ -37,7 +37,7 @@ canvas = st_canvas(
 )
 
 if canvas.image_data is not None:
-    st.image(canvas_result.image_data)
+    st.image(canvas.image_data)
 
 '''
 def draw(filename='drawing.png', w=400, h=400, line_width=40):

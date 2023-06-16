@@ -1,9 +1,14 @@
 import streamlit as st
+from streamlit_drawable_canvas import st_canvas
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow import keras
 import pickle
+
+from PIL import Image, ImageOps
+import PIL
+from base64 import b64decode
 
 filename1 = "./logreg.sav"
 logreg = pickle.load(open(filename1, 'rb'))
@@ -18,51 +23,23 @@ filename4 = "./lenet"
 lenet = keras.models.load_model(filename4)
 
 
-from IPython.display import HTML, Image
-from google.colab.output import eval_js
-from base64 import b64decode
+canvas = st_canvas(
+  fill_color="rgba(255, 165, 0, 0.3)",  # Fixed fill color with some opacity
+  stroke_width=20,
+  stroke_color="rgba(0, 0, 0, 1)",
+  background_color="rgba(0, 0, 0, 0)",
+  update_streamlit=realtime_update,
+  width=200
+  height=200,
+  drawing_mode="freedraw",
+  point_display_radius= 0,
+  key="canvas",
+)
 
-# %matplotlib inline
-import matplotlib.pyplot as plt
-import numpy as np
-from PIL import Image, ImageOps
-import PIL
+if canvas_result.image_data is not None:
+    st.image(canvas_result.image_data)
 
-canvas_html = """
-<canvas width=%d height=%d></canvas>
-<button>Finish</button>
-<script>
-var canvas = document.querySelector('canvas')
-var ctx = canvas.getContext('2d')
-ctx.lineWidth = %d
-ctx.fillStyle = "#ffffff";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-var button = document.querySelector('button')
-var mouse = {x: 0, y: 0}
-canvas.addEventListener('mousemove', function(e) {
-  mouse.x = e.pageX - this.offsetLeft
-  mouse.y = e.pageY - this.offsetTop
-})
-canvas.onmousedown = ()=>{
-  ctx.beginPath()
-  ctx.moveTo(mouse.x, mouse.y)
-  canvas.addEventListener('mousemove', onPaint)
-}
-canvas.onmouseup = ()=>{
-  canvas.removeEventListener('mousemove', onPaint)
-}
-var onPaint = ()=>{
-  ctx.lineTo(mouse.x, mouse.y)
-  ctx.stroke()
-}
-var data = new Promise(resolve=>{
-  button.onclick = ()=>{
-    resolve(canvas.toDataURL('image/png'))
-  }
-})
-</script>
-"""
-
+'''
 def draw(filename='drawing.png', w=400, h=400, line_width=40):
   display(HTML(canvas_html % (w, h, line_width)))
   data = eval_js("data")
@@ -94,7 +71,7 @@ drawing = Image.open('drawing.png')
 
 drawing = process_img(drawing)
 
-#----------------------------------------
+
 def increase_font():
   from IPython.display import Javascript
   display(Javascript('''
@@ -131,3 +108,4 @@ pred = lenet.predict(drawing_test)
 max_idx = np.max(pred)
 guess = np.argmax(pred)
 print(f'LeNet-5 says {guess} with probability {round(max_idx*100, 2)}%')
+'''

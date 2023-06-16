@@ -37,16 +37,18 @@ canvas = st_canvas(
 )
 
 def process_img(img):
-  np.resize(img, (28,28))
-
+  img.resize((28,28))
+  img = img.convert('L')
+  img = ImageOps.invert(img)
+  img = np.array(img)
   img = img/255
-
   return img
 
 
 if canvas.image_data is not None:
-  image = process_img(np.array(canvas.image_data))
-  st.image(image)
+  drawing = Image.open(canvas.image_data)
+  drawing = process_img(drawing)
+  st.image(drawing)
 
 '''
 def draw(filename='drawing.png', w=400, h=400, line_width=40):

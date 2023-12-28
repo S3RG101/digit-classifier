@@ -43,16 +43,16 @@ st.header('Breakdown')
 if canvas.image_data is not None:
   drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('RGBA')
   resized_drawing = drawing.resize((28, 28))
-  st.image(resized_drawing, caption="Resized Image (28x28)", width=400)
+  # st.image(resized_drawing, caption="Resized Image (28x28)", width=400)
 
   resized_drawing.load()
   background = Image.new("RGB", resized_drawing.size, (255, 255, 255))
   background.paste(resized_drawing, mask = resized_drawing.split()[3])
 
   pixels = np.array(ImageOps.invert(background.convert('L'))) / 255.0
-  st.write("Pixel Data:")
-  st.write(pixels)
-  st.write(pixels.shape)
+  # st.write("Pixel Data:")
+  # st.write(pixels)
+  # st.write(pixels.shape)
 
 drawing_test = pixels.reshape(1,784)
 logregpred = logreg.predict(drawing_test)

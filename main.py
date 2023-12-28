@@ -38,7 +38,7 @@ with col1:
     drawing_mode="freedraw",
     key="canvas")
 
-st.header('Breakdown')
+# st.header('Breakdown')
 
 if canvas.image_data is not None:
   drawing = Image.fromarray(canvas.image_data.astype('uint8')).convert('RGBA')
